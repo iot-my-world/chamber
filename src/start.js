@@ -50,6 +50,8 @@ function parseCommandLineArgs() {
     sleepFactor: 1,
   }
 
+  console.log('this is srunnng!!')
+
   for (let cmdLineArg in process.env) {
     switch (cmdLineArg) {
       case 'ENVIRONMENT':

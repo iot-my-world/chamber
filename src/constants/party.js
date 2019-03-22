@@ -2,7 +2,7 @@ const SystemPartyType = 'System'
 const ClientPartyType = 'Client'
 const CompanyPartyType = 'Company'
 
-export const allPartyTypes = [
+const allPartyTypes = [
   SystemPartyType,
   ClientPartyType,
   CompanyPartyType,

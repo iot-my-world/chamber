@@ -1,4 +1,4 @@
-const BaseClass = require('../../base')
+const BaseClass = require('../../base/Base')
 
 class Base extends BaseClass {
   constructor(page) {
