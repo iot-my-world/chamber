@@ -115,7 +115,7 @@ class Session {
           await newSystemSidebar(this._page),
           this.sidebarGetHandler(activeView => this._activeView = activeView),
         )
-        this._activeView = await newSystemHomeView(this._page)
+        // this._activeView = await newSystemHomeView(this._page)
         break
 
       default:

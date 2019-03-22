@@ -54,16 +54,8 @@ Sidebar.HistoricalTrackingDashboardLinkID = '#sidebarHistoricalTrackingDashboard
 Sidebar.initialSelectors = [
   ...SidebarBase.initialSelectors,
   Sidebar.homePageLinkID,
-
   Sidebar.CompanyConfigurationMenuOpen,
-  Sidebar.CompanyConfigurationLinkID,
-  Sidebar.ClientConfigurationLinkID,
-  Sidebar.UserConfigurationLinkID,
-  Sidebar.DeviceConfigurationLinkID,
-
   Sidebar.DashboardsMenuOpen,
-  Sidebar.LiveTrackingDashboardLinkID,
-  Sidebar.HistoricalTrackingDashboardLinkID,
 ]
 
 /**
