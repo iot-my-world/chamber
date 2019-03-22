@@ -1,8 +1,8 @@
 const newSystemSidebar = require('../component/system/sidebar')
-const newSystemHomeView = require('../view/system/home')
-const newLoginView = require('../view/shared/login')
+const newSystemHomeView = require('../app/view/System/home/Home')
+const newLoginView = require('../app/view/public/login/Login')
 const {isFunction} = require('../../utilities/utilities')
-const ViewBase = require('../view/base/base')
+const ViewBase = require('../app/view/base/Base')
 const {SystemPartyType} = require('../../constants/party')
 
 class Session {
@@ -59,25 +59,26 @@ class Session {
 
     // sidebar handler to set
     this.sidebarGetHandler = setActiveView => ({
-      get(target, prop){
+      get(target, prop) {
         if (
-            (isFunction(target[prop])) &&
-            (target[prop].name.startsWith('selectView'))
+          (isFunction(target[prop])) &&
+          (target[prop].name.startsWith('selectView'))
         ) {
-          return ( async () => {
+          return (async () => {
             const view = await Promise.resolve(target[prop]())
             if (!(view instanceof ViewBase)) {
-              throw new TypeError(`active view should always be an instance of the ViewBase class or one of it's children`)
+              throw new TypeError(
+                `active view should always be an instance of the ViewBase class or one of it's children`)
             }
             setActiveView(view)
           })
         }
         return target[prop]
-      }
+      },
     })
   }
 
-  async start(){
+  async start() {
     if (this._started) {
       throw new Error(`session has already been started`)
     }
@@ -87,18 +88,18 @@ class Session {
     this._started = true
   }
 
-  async end(){
+  async end() {
     if (!this._started) {
       throw new Error('cannot end session that was not started')
     }
     await this._page.close()
   }
 
-  get loggedIn(){
+  get loggedIn() {
     return this._loggedIn
   }
 
-  async login(username, password, partyType){
+  async login(username, password, partyType) {
     if (!this._started) {
       await this.start()
     }
@@ -107,32 +108,34 @@ class Session {
     const loginView = await newLoginView(this._page)
     await loginView.login(username, password)
 
-
     switch (partyType) {
 
-      case partyTypes.system:
+      case SystemPartyType:
         this._sidebar = new Proxy(
-            await newSystemSidebar(this._page),
-            this.sidebarGetHandler(activeView => this._activeView = activeView),
+          await newSystemSidebar(this._page),
+          this.sidebarGetHandler(activeView => this._activeView = activeView),
         )
         this._activeView = await newSystemHomeView(this._page)
         break
 
       default:
-        throw new TypeError(`invalid/unsupported party type ${partyType} provided to Login.login`)
+        throw new TypeError(
+          `invalid/unsupported party type ${partyType} provided to Login.login`)
     }
   }
 
-  get sidebar(){
+  get sidebar() {
     if (this._sidebar === undefined) {
-      throw new ReferenceError(`sidebar is not yet defined. must log in before accessing sidebar`)
+      throw new ReferenceError(
+        `sidebar is not yet defined. must log in before accessing sidebar`)
     }
     return this._sidebar
   }
 
-  get activeView(){
+  get activeView() {
     if (this._activeView === undefined) {
-      throw new ReferenceError(`active view is not yet defined. must log in before getting active view`)
+      throw new ReferenceError(
+        `active view is not yet defined. must log in before getting active view`)
     }
     return this._activeView
   }
