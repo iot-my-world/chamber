@@ -24,8 +24,8 @@ class Login extends ViewBase {
 
 }
 
-Login.usernameEmailInputBoxID = '#usernameOrEmailAddressInput'
-Login.passwordBoxID = '#passwordInput'
+Login.usernameEmailInputBoxID = '#usernameOrEmailAddress'
+Login.passwordBoxID = '#password'
 Login.loginButtonID = '#loginButton'
 
 /**
