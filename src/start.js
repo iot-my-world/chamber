@@ -8,9 +8,6 @@ const globalVariables = {
   expect: global.expect,
 }
 
-// puppeteer overview:
-// https://pptr.dev/#?product=Puppeteer&version=v1.10.0&show=api-overview
-
 // puppeteer options
 const opts = {
   // Whether to ignore HTTPS errors
@@ -23,7 +20,6 @@ const opts = {
 
   // Slows down Puppeteer operations by the
   // specified amount of milliseconds
-  // FIXME: reducing this too much can cause tests to fail
   slowMo: 10,
 
   // Maximum time in milliseconds to wait for the browser instance to start.
@@ -46,8 +42,6 @@ const opts = {
     width: 1920,
     height: 1080,
   },
-  // further info on these args:
-  // https://pptr.dev/#?product=Puppeteer&version=v1.10.0&show=api-puppeteerlaunchoptions
 }
 
 function parseCommandLineArgs() {
@@ -60,8 +54,8 @@ function parseCommandLineArgs() {
     switch (cmdLineArg) {
       case 'ENVIRONMENT':
         switch (process.env[cmdLineArg]) {
-          case 'staging':
-            args.tbdURL = 'https://staging.tbdealing.io'
+          case 'server':
+            args.tbdURL = 'https://spotnav.net'
             break
 
           case 'local':
