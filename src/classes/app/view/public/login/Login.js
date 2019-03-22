@@ -17,8 +17,6 @@ class Login extends ViewBase {
    * @returns {Promise<{sidebar: Sidebar, homeView: Home}>}
    */
   async login(username, password) {
-    await this.click(Login.landingPageLoginButtonID)
-
     await this.focusAndType(Login.usernameEmailInputBoxID, username)
     await this.focusAndType(Login.passwordBoxID, password)
     await this.click(Login.loginButtonID)
@@ -26,10 +24,9 @@ class Login extends ViewBase {
 
 }
 
-Login.landingPageLoginButtonID = '#landing_page_login_button'
-Login.usernameEmailInputBoxID = '#login_username_email_address'
-Login.passwordBoxID = '#login_password'
-Login.loginButtonID = '#login_button'
+Login.usernameEmailInputBoxID = '#usernameOrEmailAddressInput'
+Login.passwordBoxID = '#passwordInput'
+Login.loginButtonID = '#loginButton'
 
 /**
  * a list of selectors (e.g. IDs, className etc) which need to be
@@ -38,7 +35,9 @@ Login.loginButtonID = '#login_button'
  */
 Login.initialSelectors = [
   ...ViewBase.initialSelectors,
-  Login.landingPageLoginButtonID,
+  Login.usernameEmailInputBoxID,
+  Login.passwordBoxID,
+  Login.loginButtonID,
 ]
 
 /**

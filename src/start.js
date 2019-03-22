@@ -34,14 +34,15 @@ const opts = {
   // args: [
   //     e.g. '--start-fullscreen',
   // ]
-  args: [
-    `--window-size=1920,1080`,
-  ],
 
-  defaultViewport: {
-    width: 1920,
-    height: 1080,
-  },
+  // args: [
+  //   `--window-size=1920,1080`,
+  // ],
+  //
+  // defaultViewport: {
+  //   width: 1920,
+  //   height: 1080,
+  // },
 }
 
 function parseCommandLineArgs() {
@@ -49,8 +50,6 @@ function parseCommandLineArgs() {
     tbdURL: 'http://localhost:3000',
     sleepFactor: 1,
   }
-
-  console.log('this is srunnng!!')
 
   for (let cmdLineArg in process.env) {
     switch (cmdLineArg) {
