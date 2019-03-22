@@ -36,6 +36,16 @@ class Sidebar extends SidebarBase {
 // other sidebar link ids
 Sidebar.homePageLinkID = '#sidebarHomeLink'
 
+Sidebar.CompanyConfigurationMenuOpen = '#sidebarConfigurationMenuOpen'
+Sidebar.CompanyConfigurationLinkID = '#sidebarCompanyConfigurationLink'
+Sidebar.ClientConfigurationLinkID = '#sidebarClientConfigurationLink'
+Sidebar.UserConfigurationLinkID = '#sidebarUserConfigurationLink'
+Sidebar.DeviceConfigurationLinkID = '#sidebarDeviceConfigurationLink'
+
+Sidebar.DashboardsMenuOpen = '#sidebarDashboardsMenuOpen'
+Sidebar.LiveTrackingDashboardLinkID = '#sidebarLiveTrackingDashboardLink'
+Sidebar.HistoricalTrackingDashboardLinkID = '#sidebarHistoricalTrackingDashboardLink'
+
 /**
  * a list of selectors (e.g. IDs, className etc) which need to be
  * visible for this class to be able to work.
@@ -44,6 +54,16 @@ Sidebar.homePageLinkID = '#sidebarHomeLink'
 Sidebar.initialSelectors = [
   ...SidebarBase.initialSelectors,
   Sidebar.homePageLinkID,
+
+  Sidebar.CompanyConfigurationMenuOpen,
+  Sidebar.CompanyConfigurationLinkID,
+  Sidebar.ClientConfigurationLinkID,
+  Sidebar.UserConfigurationLinkID,
+  Sidebar.DeviceConfigurationLinkID,
+
+  Sidebar.DashboardsMenuOpen,
+  Sidebar.LiveTrackingDashboardLinkID,
+  Sidebar.HistoricalTrackingDashboardLinkID,
 ]
 
 /**

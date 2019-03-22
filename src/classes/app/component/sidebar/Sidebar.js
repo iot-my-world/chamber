@@ -6,15 +6,15 @@ const ComponentBase = require('../base/base')
  * party specific sidebars
  */
 class Sidebar extends ComponentBase {
-  constructor(page){
+  constructor(page) {
     super(page)
   }
 }
 
 Sidebar.rootID = '#sidebarRoot'
-Sidebar.linksRootID = '#sidebarLinksRoot'
-Sidebar.userRootID = '#sidebarUserRoot'
-Sidebar.listRootID = '#sidebarListRoot'
+Sidebar.profileLinkID = '#sidebarProfileLink'
+Sidebar.homeLinkID = '#sidebarHomeLink'
+Sidebar.logoutLinkID = '#sidebarLogoutLink'
 
 /**
  * a list of selectors (e.g. IDs, className etc) which need to be
@@ -22,11 +22,11 @@ Sidebar.listRootID = '#sidebarListRoot'
  * @type {string[]}
  */
 Sidebar.initialSelectors = [
-    ...ComponentBase.initialSelectors,
-    Sidebar.rootID,
-    Sidebar.linksRootID,
-    Sidebar.userRootID,
-    Sidebar.listRootID,
+  ...ComponentBase.initialSelectors,
+  Sidebar.rootID,
+  Sidebar.profileLinkID,
+  Sidebar.homeLinkID,
+  Sidebar.logoutLinkID,
 ]
 
 module.exports = Sidebar

@@ -107,21 +107,21 @@ class Session {
 
     const loginView = await newLoginView(this._page)
     await loginView.login(username, password)
-    //
-    // switch (partyType) {
-    //
-    //   case SystemPartyType:
-    //     this._sidebar = new Proxy(
-    //       await newSystemSidebar(this._page),
-    //       this.sidebarGetHandler(activeView => this._activeView = activeView),
-    //     )
-    //     this._activeView = await newSystemHomeView(this._page)
-    //     break
-    //
-    //   default:
-    //     throw new TypeError(
-    //       `invalid/unsupported party type ${partyType} provided to Login.login`)
-    // }
+
+    switch (partyType) {
+
+      case SystemPartyType:
+        this._sidebar = new Proxy(
+          await newSystemSidebar(this._page),
+          this.sidebarGetHandler(activeView => this._activeView = activeView),
+        )
+        this._activeView = await newSystemHomeView(this._page)
+        break
+
+      default:
+        throw new TypeError(
+          `invalid/unsupported party type ${partyType} provided to Login.login`)
+    }
   }
 
   get sidebar() {
