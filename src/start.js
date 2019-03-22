@@ -31,18 +31,14 @@ const opts = {
 
   // additional chrome command line switches
   // https://peter.sh/experiments/chromium-command-line-switches/
-  // args: [
-  //     e.g. '--start-fullscreen',
-  // ]
+  args: [
+    '--start-fullscreen',
+  ],
 
-  // args: [
-  //   `--window-size=1920,1080`,
-  // ],
-  //
-  // defaultViewport: {
-  //   width: 1920,
-  //   height: 1080,
-  // },
+  defaultViewport: {
+    width: 1440,
+    height: 900,
+  },
 }
 
 function parseCommandLineArgs() {

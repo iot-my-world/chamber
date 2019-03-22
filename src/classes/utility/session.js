@@ -84,7 +84,7 @@ class Session {
     }
     this._page = await this._browser.newPage({timeout: 10000})
     await this._page.bringToFront()
-    await this._page.goto(this._rootURL)
+    await this._page.goto(this._rootURL, {waitUntil: 'networkidle2'})
     this._started = true
   }
 
