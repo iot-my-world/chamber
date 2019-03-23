@@ -1,10 +1,18 @@
 const {TimeoutError} = require('puppeteer/Errors')
 const SidebarBase = require('../../base/Sidebar')
 const newHomeView = require('../../../../view/home/system/home/Home')
-const newClientConfigurationView = require('../../../../view/configuration/client/Client')
-const newCompanyConfigurationView = require('../../../../view/configuration/company/Company')
-const newUserConfigurationView = require('../../../../view/configuration/user/User')
-const newDeviceConfigurationView = require('../../../../view/configuration/device/Device')
+const newClientConfigurationView = require(
+  '../../../../view/configuration/client/Client')
+const newCompanyConfigurationView = require(
+  '../../../../view/configuration/company/Company')
+const newUserConfigurationView = require(
+  '../../../../view/configuration/user/User')
+const newDeviceConfigurationView = require(
+  '../../../../view/configuration/device/Device')
+const newLiveTrackingDashboardView = require(
+  '../../../../view/dashboard/tracking/live/Live')
+const newHistoricalTrackingDashboardView = require(
+  '../../../../view/dashboard/tracking/historical/Historical')
 
 /**
  * system sidebar component class
@@ -69,6 +77,22 @@ class Sidebar extends SidebarBase {
     }
     await this.click(Sidebar.DeviceConfigurationLinkID)
     return await newDeviceConfigurationView(this.page)
+  }
+
+  async selectViewLiveTrackingDashboard() {
+    if (!this.dashboardMenuOpen) {
+      await this.openDashboardsMenu()
+    }
+    await this.click(Sidebar.LiveTrackingDashboardLinkID)
+    return await newLiveTrackingDashboardView(this.page)
+  }
+
+  async selectViewHistoricalTrackingDashboard() {
+    if (!this.dashboardMenuOpen) {
+      await this.openDashboardsMenu()
+    }
+    await this.click(Sidebar.HistoricalTrackingDashboardLinkID)
+    return await newHistoricalTrackingDashboardView(this.page)
   }
 
   async selectViewHome() {

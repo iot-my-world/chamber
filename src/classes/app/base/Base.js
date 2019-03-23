@@ -83,6 +83,27 @@ class Base {
   }
 
   /**
+   * Check for timeout amount of time if element referenced by given
+   * selector is visible
+   * @param {string} elementSelector - a selector referencing the element
+   * @param {number} timeout - amount of time to wait for visibility
+   * @returns {Promise<boolean>}
+   */
+  async checkIfVisible(elementSelector, timeout = 100) {
+    try {
+      await this._page.waitForSelector(elementSelector, {timeout})
+      return true
+    } catch (e) {
+      if (e instanceof TimeoutError) {
+        return false
+      } else {
+        console.error(`unknown error occurred: ${e}`)
+        throw e
+      }
+    }
+  }
+
+  /**
    * wait for an element to be visible
    * @param elementSelector - a selector referencing the element
    * @param {number} [timeout] - amount of time to wait (ms)

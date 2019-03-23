@@ -13,6 +13,8 @@ async function loginAndNavigateTest() {
   await systemSession.sidebar.selectViewClientConfiguration()
   await systemSession.sidebar.selectViewUserConfiguration()
   await systemSession.sidebar.selectViewDeviceConfiguration()
+  await systemSession.sidebar.selectViewLiveTrackingDashboard()
+  await systemSession.sidebar.selectViewHistoricalTrackingDashboard()
 
   await systemSession.end()
 }
