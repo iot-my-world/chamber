@@ -1,4 +1,4 @@
-const ComponentBase = require('../base/base')
+const ComponentBase = require('../../base/Base')
 
 /**
  * base sidebar component class

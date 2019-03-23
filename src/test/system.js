@@ -1,7 +1,7 @@
 const {
-  loginTest,
-} = require('./system/login')
+  loginAndNavigateTest,
+} = require('./system/loginAndNavigate')
 
 module.exports = describe('System', function() {
-  it('Login and Navigate', loginTest)
+  it('Login and Navigate', loginAndNavigateTest)
 })

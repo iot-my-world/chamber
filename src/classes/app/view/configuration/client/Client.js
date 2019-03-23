@@ -1,4 +1,4 @@
-const ViewBase = require('../../../base/Base')
+const ViewBase = require('../../base/Base')
 
 class Client extends ViewBase {
   constructor(page) {
@@ -28,10 +28,10 @@ Client.initialSelectors = [
  * @param page
  * @returns {Promise<Client>}
  */
-async function newClient(page) {
+async function newClientConfigurationView(page) {
   const newHome = new Client(page)
   await newHome.initialise()
   return newHome
 }
 
-module.exports = newClient
+module.exports = newClientConfigurationView

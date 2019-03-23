@@ -1,4 +1,4 @@
-const newSystemSidebar = require('../app/component/system/sidebar/Sidebar')
+const newSystemSidebar = require('../app/component/sidebar/system/sidebar/Sidebar')
 const newSystemHomeView = require('../app/view/home/system/home/Home')
 const newLoginView = require('../app/view/public/login/Login')
 const {isFunction} = require('../../utilities/utilities')

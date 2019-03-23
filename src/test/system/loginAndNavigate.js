@@ -1,7 +1,7 @@
 const { SystemPartyType } = require('../../constants/party')
 const Session = require('../../classes/utility/session')
 
-async function loginTest () {
+async function loginAndNavigateTest () {
   // total amount of time allowed for test
   this.timeout(150000)
 
@@ -9,7 +9,10 @@ async function loginTest () {
   const systemSession = new Session(browser, tbdURL)
   await systemSession.login('root', '12345', SystemPartyType)
 
+  await systemSession.sidebar.selectViewCompanyConfiguration()
+  await systemSession.sidebar.selectViewClientConfiguration()
+
   await systemSession.end()
 }
 
-module.exports.loginTest = loginTest
+module.exports.loginAndNavigateTest = loginAndNavigateTest
