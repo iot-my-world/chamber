@@ -3,6 +3,7 @@ const SidebarBase = require('../../base/Sidebar')
 const newHomeView = require('../../../../view/home/system/home/Home')
 const newClientConfigurationView = require('../../../../view/configuration/client/Client')
 const newCompanyConfigurationView = require('../../../../view/configuration/company/Company')
+const newUserConfigurationView = require('../../../../view/configuration/user/User')
 
 /**
  * system sidebar component class
@@ -37,26 +38,28 @@ class Sidebar extends SidebarBase {
     this.dashboardMenuOpen = true
   }
 
-  async selectViewClientConfiguration() {
-    if (!this.configurationMenuOpen) {
-      await this.openConfigurationMenu()
-    }
-    // click on the client configuration link in the configuration menu
-    await this.click(Sidebar.ClientConfigurationLinkID)
-
-    // return an instance of the client configuration view
-    return await newClientConfigurationView(this.page)
-  }
-
   async selectViewCompanyConfiguration() {
     if (!this.configurationMenuOpen) {
       await this.openConfigurationMenu()
     }
-    // click on the company configuration link in the configuration menu
     await this.click(Sidebar.CompanyConfigurationLinkID)
-
-    // return an instance of the client configuration view
     return await newCompanyConfigurationView(this.page)
+  }
+
+  async selectViewClientConfiguration() {
+    if (!this.configurationMenuOpen) {
+      await this.openConfigurationMenu()
+    }
+    await this.click(Sidebar.ClientConfigurationLinkID)
+    return await newClientConfigurationView(this.page)
+  }
+
+  async selectViewUserConfiguration() {
+    if (!this.configurationMenuOpen) {
+      await this.openConfigurationMenu()
+    }
+    await this.click(Sidebar.UserConfigurationLinkID)
+    return await newUserConfigurationView(this.page)
   }
 
   async selectViewHome() {

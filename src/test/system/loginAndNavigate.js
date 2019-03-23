@@ -1,7 +1,7 @@
-const { SystemPartyType } = require('../../constants/party')
+const {SystemPartyType} = require('../../constants/party')
 const Session = require('../../classes/utility/session')
 
-async function loginAndNavigateTest () {
+async function loginAndNavigateTest() {
   // total amount of time allowed for test
   this.timeout(150000)
 
@@ -11,6 +11,7 @@ async function loginAndNavigateTest () {
 
   await systemSession.sidebar.selectViewCompanyConfiguration()
   await systemSession.sidebar.selectViewClientConfiguration()
+  await systemSession.sidebar.selectViewUserConfiguration()
 
   await systemSession.end()
 }
