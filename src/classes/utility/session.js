@@ -1,5 +1,5 @@
 const newSystemSidebar = require('../app/component/system/sidebar/Sidebar')
-const newSystemHomeView = require('../app/view/System/home/Home')
+const newSystemHomeView = require('../app/view/home/system/home/Home')
 const newLoginView = require('../app/view/public/login/Login')
 const {isFunction} = require('../../utilities/utilities')
 const ViewBase = require('../app/view/base/Base')
@@ -115,7 +115,7 @@ class Session {
           await newSystemSidebar(this._page),
           this.sidebarGetHandler(activeView => this._activeView = activeView),
         )
-        // this._activeView = await newSystemHomeView(this._page)
+        this._activeView = await newSystemHomeView(this._page)
         break
 
       default:

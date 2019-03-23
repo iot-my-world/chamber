@@ -1,6 +1,6 @@
 const {TimeoutError} = require('puppeteer/Errors')
 const SidebarBase = require('../../sidebar/Sidebar')
-const newHomeView = require('../../../view/system/home/Home')
+const newHomeView = require('../../../view/home/system/home/Home')
 
 /**
  * system sidebar component class
@@ -10,6 +10,29 @@ const newHomeView = require('../../../view/system/home/Home')
 class Sidebar extends SidebarBase {
   constructor(page) {
     super(page)
+    this.configurationMenuOpen = false
+    this.dashboardMenuOpen = false
+  }
+
+  async openConfigurationMenu() {
+    if (this.configurationMenuOpen) {
+      throw new Error('client configuration menu already open')
+    }
+    await this.click(Sidebar.CompanyConfigurationMenuOpen)
+    await this.waitForVisible(Sidebar.ClientConfigurationLinkID)
+    await this.waitForVisible(Sidebar.CompanyConfigurationLinkID)
+    await this.waitForVisible(Sidebar.UserConfigurationLinkID)
+    this.configurationMenuOpen = true
+  }
+
+  async openDashboardsMenu() {
+    if (this.dashboardMenuOpen) {
+      throw new Error('dashboards menu already open')
+    }
+    await this.click(Sidebar.DashboardsMenuOpen)
+    await this.waitForVisible(Sidebar.LiveTrackingDashboardLinkID)
+    await this.waitForVisible(Sidebar.HistoricalTrackingDashboardLinkID)
+    this.dashboardMenuOpen = true
   }
 
   async selectViewHome() {
