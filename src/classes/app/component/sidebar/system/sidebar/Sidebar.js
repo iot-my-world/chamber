@@ -4,6 +4,7 @@ const newHomeView = require('../../../../view/home/system/home/Home')
 const newClientConfigurationView = require('../../../../view/configuration/client/Client')
 const newCompanyConfigurationView = require('../../../../view/configuration/company/Company')
 const newUserConfigurationView = require('../../../../view/configuration/user/User')
+const newDeviceConfigurationView = require('../../../../view/configuration/device/Device')
 
 /**
  * system sidebar component class
@@ -60,6 +61,14 @@ class Sidebar extends SidebarBase {
     }
     await this.click(Sidebar.UserConfigurationLinkID)
     return await newUserConfigurationView(this.page)
+  }
+
+  async selectViewDeviceConfiguration() {
+    if (!this.configurationMenuOpen) {
+      await this.openConfigurationMenu()
+    }
+    await this.click(Sidebar.DeviceConfigurationLinkID)
+    return await newDeviceConfigurationView(this.page)
   }
 
   async selectViewHome() {

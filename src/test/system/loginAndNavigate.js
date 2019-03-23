@@ -12,6 +12,7 @@ async function loginAndNavigateTest() {
   await systemSession.sidebar.selectViewCompanyConfiguration()
   await systemSession.sidebar.selectViewClientConfiguration()
   await systemSession.sidebar.selectViewUserConfiguration()
+  await systemSession.sidebar.selectViewDeviceConfiguration()
 
   await systemSession.end()
 }
