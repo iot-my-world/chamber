@@ -33,6 +33,7 @@ const opts = {
   // https://peter.sh/experiments/chromium-command-line-switches/
   args: [
     '--start-fullscreen',
+    '--no-sandbox',
   ],
 
   defaultViewport: {
