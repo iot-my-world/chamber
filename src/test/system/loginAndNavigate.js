@@ -6,7 +6,7 @@ async function loginAndNavigateTest() {
   this.timeout(150000)
 
   // create and log into session
-  const systemSession = new Session(browser, tbdURL)
+  const systemSession = new Session(browser, iotMyWorldURL)
   await systemSession.login('root', '12345', SystemPartyType)
 
   await systemSession.sidebar.selectViewCompanyConfiguration()

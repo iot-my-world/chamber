@@ -4,7 +4,7 @@ async function navigateTest() {
   // total amount of time allowed for test
   this.timeout(150000)
 
-  const publicSession = new Session(browser, tbdURL)
+  const publicSession = new Session(browser, iotMyWorldURL)
 
   await publicSession.start()
 

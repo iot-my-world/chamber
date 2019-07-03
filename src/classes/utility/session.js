@@ -9,9 +9,9 @@ class Session {
   /**
    * construct new session object
    * @param {Browser} browser
-   * @param {string} tbdURL
+   * @param {string} iotMyWorldURL
    */
-  constructor(browser, tbdURL) {
+  constructor(browser, iotMyWorldURL) {
     /**
      * indicates whether session
      * has been logged in
@@ -39,7 +39,7 @@ class Session {
      * @type {string}
      * @private
      */
-    this._rootURL = tbdURL
+    this._rootURL = iotMyWorldURL
     /**
      * Sidebar component for the
      * party type logged in to the

@@ -43,7 +43,7 @@ const opts = {
 
 function parseCommandLineArgs() {
   let args = {
-    tbdURL: 'http://localhost:3000',
+    iotMyWorldURL: 'http://localhost:3000',
     sleepFactor: 1,
   }
 
@@ -52,12 +52,12 @@ function parseCommandLineArgs() {
       case 'ENVIRONMENT':
         switch (process.env[cmdLineArg]) {
           case 'build':
-            args.tbdURL = 'http://localhost:5000'
+            args.iotMyWorldURL = 'http://localhost:5000'
             break
 
           case 'local':
           default:
-            args.tbdURL = 'http://localhost:3000'
+            args.iotMyWorldURL = 'http://localhost:3000'
         }
         break
 
@@ -86,7 +86,7 @@ before(async function() {
   global.browser = await puppeteer.launch(opts)
 
   const cmdLineArgs = parseCommandLineArgs()
-  global.tbdURL = cmdLineArgs.tbdURL
+  global.iotMyWorldURL = cmdLineArgs.iotMyWorldURL
   global.sleepFactor = cmdLineArgs.sleepFactor
 })
 
