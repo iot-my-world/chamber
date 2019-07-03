@@ -51,8 +51,8 @@ function parseCommandLineArgs() {
     switch (cmdLineArg) {
       case 'ENVIRONMENT':
         switch (process.env[cmdLineArg]) {
-          case 'server':
-            args.tbdURL = 'https://spotnav.net'
+          case 'build':
+            args.tbdURL = 'http://localhost:5000'
             break
 
           case 'local':
