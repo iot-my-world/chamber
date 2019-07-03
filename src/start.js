@@ -43,6 +43,7 @@ const opts = {
 
 function parseCommandLineArgs() {
   let args = {
+    environment: 'local',
     iotMyWorldURL: 'http://localhost:3000',
     sleepFactor: 1,
   }
@@ -53,10 +54,12 @@ function parseCommandLineArgs() {
         switch (process.env[cmdLineArg]) {
           case 'build':
             args.iotMyWorldURL = 'http://localhost:5000'
+            args.environment = 'build'
             break
 
           case 'local':
           default:
+            args.environment = 'local'
             args.iotMyWorldURL = 'http://localhost:3000'
         }
         break
@@ -83,11 +86,15 @@ function parseCommandLineArgs() {
 before(async function() {
   this.timeout(10000)
   global.expect = expect
-  global.browser = await puppeteer.launch(opts)
-
   const cmdLineArgs = parseCommandLineArgs()
   global.iotMyWorldURL = cmdLineArgs.iotMyWorldURL
   global.sleepFactor = cmdLineArgs.sleepFactor
+
+  if (cmdLineArgs.environment === 'build') {
+    opts.headless = true
+  }
+
+  global.browser = await puppeteer.launch(opts)
 })
 
 // controlled by mocha
