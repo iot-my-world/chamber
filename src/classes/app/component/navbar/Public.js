@@ -1,6 +1,12 @@
 const Base = require('./Base')
 const newInfoView = require('../../view/public/Info')
 const newContributorsView = require('../../view/public/Contributors')
+const newLoginForgotPasswordView = require(
+  '../../view/public/LoginForgotPassword',
+)
+const newTermsConditionsAndPrivacyView = require(
+  '../../view/public/TermsConditionsAndPrivacy',
+)
 
 class PublicNavBar extends Base {
   async selectViewInfo() {
@@ -11,6 +17,16 @@ class PublicNavBar extends Base {
   async selectViewContributors() {
     await this.click(PublicNavBar.ContributorsTabID)
     return await newContributorsView(this.page)
+  }
+
+  async selectViewLoginForgotPassword() {
+    await this.click(PublicNavBar.LoginForgotPasswordTabID)
+    return await newLoginForgotPasswordView(this.page)
+  }
+
+  async selectViewTermsConditionsAndPrivacy() {
+    await this.click(PublicNavBar.TermsConditionsAndPrivacyTabID)
+    return await newTermsConditionsAndPrivacyView(this.page)
   }
 }
 

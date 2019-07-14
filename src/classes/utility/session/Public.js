@@ -43,6 +43,10 @@ class Public extends Base {
     )
   }
 
+  get navbar() {
+    return this._navbar
+  }
+
 }
 
 module.exports = Public
