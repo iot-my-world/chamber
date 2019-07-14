@@ -24,6 +24,10 @@ class LoginForgotPassword extends ViewBase {
   async login(usernameOrEmailAddress, password) {
     await this.focusAndType(
       LoginForgotPassword.usernameOrEmailAddressInputID,
+      usernameOrEmailAddress,
+    )
+    await this.focusAndType(
+      LoginForgotPassword.passwordInputID,
       password,
     )
     await this.focusAndClick(LoginForgotPassword.loginButtonID)

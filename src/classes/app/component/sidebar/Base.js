@@ -6,12 +6,46 @@ const ComponentBase = require('../Base')
  * party specific sidebars
  */
 class Sidebar extends ComponentBase {
+  constructor(page) {
+    super(page)
+    this._profileMenuOpen = false
+  }
+
+  async initialise(timeout = 4000) {
+    await super.initialise(timeout)
+    await this.openProfileMenu()
+    await this.closeProfileMenu()
+  }
+
+  async openProfileMenu() {
+    if (this._profileMenuOpen) {
+      throw new Error('profile menu already open')
+    }
+    await this.focusAndClick(Sidebar.profileMenuLinkID)
+    await this.waitForVisible(Sidebar.userProfileLinkID)
+    await this.waitForVisible(Sidebar.partyProfileLinkID)
+    await this.waitForVisible(Sidebar.logoutLinkID)
+    this._profileMenuOpen = true
+  }
+
+  async closeProfileMenu() {
+    if (!this._profileMenuOpen) {
+      throw new Error('profile menu already closed')
+    }
+    await this.focusAndClick(Sidebar.profileMenuLinkID)
+    await this.waitForInvisible(Sidebar.userProfileLinkID)
+    await this.waitForInvisible(Sidebar.partyProfileLinkID)
+    await this.waitForInvisible(Sidebar.logoutLinkID)
+    this._profileMenuOpen = false
+  }
 }
 
 Sidebar.rootID = '#sidebarRoot'
-Sidebar.profileLinkID = '#sidebarProfileLink'
-Sidebar.homeLinkID = '#sidebarHomeLink'
 Sidebar.logoutLinkID = '#sidebarLogoutLink'
+
+Sidebar.profileMenuLinkID = '#sidebarProfileMenuLink'
+Sidebar.userProfileLinkID = '#sidebarUserProfileLink'
+Sidebar.partyProfileLinkID = '#sidebarPartyProfileLink'
 
 /**
  * a list of selectors (e.g. IDs, className etc) which need to be
@@ -21,9 +55,7 @@ Sidebar.logoutLinkID = '#sidebarLogoutLink'
 Sidebar.initialSelectors = [
   ...ComponentBase.initialSelectors,
   Sidebar.rootID,
-  Sidebar.profileLinkID,
-  Sidebar.homeLinkID,
-  Sidebar.logoutLinkID,
+  Sidebar.profileMenuLinkID,
 ]
 
 module.exports = Sidebar

@@ -3,5 +3,5 @@ const {
 } = require('./system/loginAndNavigate')
 
 module.exports = describe('System', function() {
-  it('Login and Navigate', loginAndNavigateTest)
+  it.only('Login and Navigate', loginAndNavigateTest)
 })

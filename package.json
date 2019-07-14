@@ -5,10 +5,8 @@
     "puppeteer": "^1.13.0"
   },
   "scripts": {
-    "testLocal": "env ENVIRONMENT=local SLEEP_FACTOR=1 mocha src/start.js --recursive --bail src/tests",
-    "testLocalHeadless": "env ENVIRONMENT=localHeadless SLEEP_FACTOR=1 mocha src/start.js --recursive --bail src/tests",
-    "testAllLocal": "env ENVIRONMENT=local SLEEP_FACTOR=1 mocha src/start.js --recursive --bail src/test/all",
-    "testAllLocalHeadless": "env ENVIRONMENT=localHeadless SLEEP_FACTOR=1 mocha src/start.js --recursive --bail src/test/all",
+    "testLocal": "env ENVIRONMENT=local SLEEP_FACTOR=1 mocha src/start.js --recursive --bail src/test/all",
+    "testLocalHeadless": "env ENVIRONMENT=localHeadless SLEEP_FACTOR=1 mocha src/start.js --recursive --bail src/test/all",
     "testBuild": "env ENVIRONMENT=build SLEEP_FACTOR=1 mocha src/start.js --recursive --bail src/test/all"
   }
 }
