@@ -1,12 +1,22 @@
 const ViewBase = require('../Base')
+const newMeinCaptcha = require('../../component/MeinCaptcha')
 
 class LoginForgotPassword extends ViewBase {
+  constructor(page) {
+    super(page)
+    this._forgotPasswordCaptcha = null
+  }
+
   async initialise(timeout = 4000) {
     await super.initialise(timeout)
 
     // click through forgot password states
     await this.click(LoginForgotPassword.forgotPasswordLabelID)
     await this.waitForVisible(LoginForgotPassword.returnToLoginCardLabelID)
+    this._forgotPasswordCaptcha = await newMeinCaptcha(
+      this.page,
+      '#forgotPasswordCaptcha',
+    )
     await this.click(LoginForgotPassword.returnToLoginCardLabelID)
     await super.initialise(timeout)
   }
