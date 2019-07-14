@@ -1,4 +1,4 @@
-const ViewBase = require('../../app/view/base/Base')
+const ViewBase = require('../../app/view/Base')
 
 class Session {
   /**

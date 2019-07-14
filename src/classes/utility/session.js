@@ -1,8 +1,8 @@
-const newSystemSidebar = require('../app/component/sidebar/system/sidebar/Sidebar')
-const newSystemHomeView = require('../app/view/home/system/home/Home')
+const newSystemSidebar = require('classes/app/component/sidebar/System')
+const newSystemHomeView = require('classes/app/view/app/home/System')
 const newLoginView = require('../app/view/public/login/Login')
 const {isFunction} = require('../../utilities/utilities')
-const ViewBase = require('../app/view/base/Base')
+const ViewBase = require('classes/app/view/Base')
 const {SystemPartyType} = require('../../constants/party')
 
 class Session {

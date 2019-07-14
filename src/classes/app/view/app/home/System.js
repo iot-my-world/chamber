@@ -1,31 +1,31 @@
-const ViewBase = require('../../../base/Base')
+const ViewBase = require('../../Base')
 
-class Home extends ViewBase {
+class System extends ViewBase {
   constructor(page) {
     super(page)
   }
 }
 
-Home.systemHomeID = '#systemHomeRoot'
+System.systemHomeID = '#systemHomeRoot'
 
 /**
  * a list of selectors (e.g. IDs, className etc) which need to be
  * visible for this class to be able to work.
  * @type {string[]}
  */
-Home.initialSelectors = [
+System.initialSelectors = [
   ...ViewBase.initialSelectors,
-  Home.systemHomeID,
+  System.systemHomeID,
 ]
 
 /**
  * Create New Home view class instance
  * return instance after initialisation
  * @param page
- * @returns {Promise<Home>}
+ * @returns {Promise<System>}
  */
 async function newHome(page) {
-  const newHome = new Home(page)
+  const newHome = new System(page)
   await newHome.initialise()
   return newHome
 }

@@ -4,13 +4,18 @@ class PublicNavBar extends Base {
 
 }
 
+PublicNavBar.InfoTabID = '#infoTab'
+PublicNavBar.ContributorsTabID = '#contributorsTab'
+PublicNavBar.LoginForgotPasswordTabID = '#loginForgotPasswordTab'
+PublicNavBar.TermsConditionsAndPrivacyTabID = '#termsConditionsAndPrivacyTab'
+
 PublicNavBar.initialSelectors = [
   '#publicAppBar',
   '#publicNavTabBar',
-  '#infoTab',
-  '#contributorsTab',
-  '#loginForgotPasswordTab',
-  '#termsConditionsAndPrivacyTab'
+  PublicNavBar.InfoTabID,
+  PublicNavBar.ContributorsTabID,
+  PublicNavBar.LoginForgotPasswordTabID,
+  PublicNavBar.TermsConditionsAndPrivacyTabID,
 ]
 
 /**

@@ -1,4 +1,4 @@
-const AppBaseClass = require('../../../app/Base')
+const AppBaseClass = require('../Base')
 
 /**
  * view base class

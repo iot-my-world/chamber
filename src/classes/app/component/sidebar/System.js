@@ -1,19 +1,19 @@
 const {TimeoutError} = require('puppeteer/Errors')
-const SidebarBase = require('../../base/Sidebar')
-const newHomeView = require('../../../../view/home/system/home/Home')
-const newClientConfigurationView = require(
-  '../../../../view/configuration/client/Client')
-const newCompanyConfigurationView = require(
-  '../../../../view/configuration/company/Company')
-const newUserConfigurationView = require(
-  '../../../../view/configuration/user/User')
+const SidebarBase = require('./Base')
+const newHomeView = require('../../view/app/home/System')
+// const newClientConfigurationView = require(
+//   'classes/app/view/app/configuration/Client')
+// const newCompanyConfigurationView = require(
+//   'classes/app/view/app/configuration/Company')
+// const newUserConfigurationView = require(
+//   'classes/app/view/app/configuration/User')
 
 /**
  * system sidebar component class
  * defines system party specific
  * sidebar functionality
  */
-class Sidebar extends SidebarBase {
+class System extends SidebarBase {
   constructor(page) {
     super(page)
     this.configurationMenuOpen = false
@@ -23,10 +23,10 @@ class Sidebar extends SidebarBase {
     if (this.configurationMenuOpen) {
       throw new Error('client configuration menu already open')
     }
-    await this.click(Sidebar.CompanyConfigurationMenuOpen)
-    await this.waitForVisible(Sidebar.ClientConfigurationLinkID)
-    await this.waitForVisible(Sidebar.CompanyConfigurationLinkID)
-    await this.waitForVisible(Sidebar.UserConfigurationLinkID)
+    await this.click(System.CompanyConfigurationMenuOpen)
+    await this.waitForVisible(System.ClientConfigurationLinkID)
+    await this.waitForVisible(System.CompanyConfigurationLinkID)
+    await this.waitForVisible(System.UserConfigurationLinkID)
     this.configurationMenuOpen = true
   }
 
@@ -34,30 +34,30 @@ class Sidebar extends SidebarBase {
     if (!this.configurationMenuOpen) {
       await this.openConfigurationMenu()
     }
-    await this.click(Sidebar.CompanyConfigurationLinkID)
-    return await newCompanyConfigurationView(this.page)
+    await this.click(System.CompanyConfigurationLinkID)
+    // return await newCompanyConfigurationView(this.page)
   }
 
   async selectViewClientConfiguration() {
     if (!this.configurationMenuOpen) {
       await this.openConfigurationMenu()
     }
-    await this.click(Sidebar.ClientConfigurationLinkID)
-    return await newClientConfigurationView(this.page)
+    await this.click(System.ClientConfigurationLinkID)
+    /*return await newClientConfigurationView(this.page)*/
   }
 
   async selectViewUserConfiguration() {
     if (!this.configurationMenuOpen) {
       await this.openConfigurationMenu()
     }
-    await this.click(Sidebar.UserConfigurationLinkID)
-    return await newUserConfigurationView(this.page)
+    await this.click(System.UserConfigurationLinkID)
+    // return await newUserConfigurationView(this.page)
   }
 
   async selectViewHome() {
     try {
       // click on the home page link in the sidebar
-      await this.click(Sidebar.homePageLinkID)
+      await this.click(System.homePageLinkID)
 
       // return an instance of the home view
       return await newHomeView(this.page)
@@ -76,32 +76,32 @@ class Sidebar extends SidebarBase {
 }
 
 // other sidebar link ids
-Sidebar.homePageLinkID = '#sidebarHomeLink'
+System.homePageLinkID = '#sidebarHomeLink'
 
-Sidebar.CompanyConfigurationMenuOpen = '#sidebarConfigurationMenuOpen'
-Sidebar.CompanyConfigurationLinkID = '#sidebarCompanyConfigurationLink'
-Sidebar.ClientConfigurationLinkID = '#sidebarClientConfigurationLink'
-Sidebar.UserConfigurationLinkID = '#sidebarUserConfigurationLink'
+System.CompanyConfigurationMenuOpen = '#sidebarConfigurationMenuOpen'
+System.CompanyConfigurationLinkID = '#sidebarCompanyConfigurationLink'
+System.ClientConfigurationLinkID = '#sidebarClientConfigurationLink'
+System.UserConfigurationLinkID = '#sidebarUserConfigurationLink'
 
 /**
  * a list of selectors (e.g. IDs, className etc) which need to be
  * visible for this class to be able to work.
  * @type {string[]}
  */
-Sidebar.initialSelectors = [
+System.initialSelectors = [
   ...SidebarBase.initialSelectors,
-  Sidebar.homePageLinkID,
-  Sidebar.CompanyConfigurationMenuOpen,
+  System.homePageLinkID,
+  System.CompanyConfigurationMenuOpen,
 ]
 
 /**
  * Create New Sidebar component class instance
  * return instance after initialisation
  * @param page
- * @returns {Promise<Sidebar>}
+ * @returns {Promise<System>}
  */
 async function newSidebar(page) {
-  const newSidebar = new Sidebar(page)
+  const newSidebar = new System(page)
   await newSidebar.initialise()
   return newSidebar
 }

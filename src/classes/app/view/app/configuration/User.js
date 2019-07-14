@@ -1,4 +1,4 @@
-const ViewBase = require('../../base/Base')
+const ViewBase = require('../../Base')
 
 class User extends ViewBase {
   constructor(page) {
