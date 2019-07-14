@@ -49,4 +49,15 @@ class Public extends Base {
 
 }
 
-module.exports = Public
+/**
+ * Create new Public Session
+ * return instance after starting
+ * @param {Browser} browser
+ * @param {string} rootURL
+ * @returns {Promise<Public>}
+ */
+module.exports.newPublicSession = async function(browser, rootURL) {
+  const newPublicSession = new Public(browser, rootURL)
+  await newPublicSession.start()
+  return newPublicSession
+}

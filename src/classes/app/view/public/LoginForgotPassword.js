@@ -20,6 +20,14 @@ class LoginForgotPassword extends ViewBase {
     await this.click(LoginForgotPassword.returnToLoginCardLabelID)
     await super.initialise(timeout)
   }
+
+  async login(usernameOrEmailAddress, password) {
+    await this.focusAndType(
+      LoginForgotPassword.usernameOrEmailAddressInputID,
+      password,
+    )
+    await this.focusAndClick(LoginForgotPassword.loginButtonID)
+  }
 }
 
 LoginForgotPassword.loginCardRootID = '#loginCardRoot'

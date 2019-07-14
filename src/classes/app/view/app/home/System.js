@@ -1,9 +1,6 @@
 const ViewBase = require('../../Base')
 
 class System extends ViewBase {
-  constructor(page) {
-    super(page)
-  }
 }
 
 System.systemHomeID = '#systemHomeRoot'

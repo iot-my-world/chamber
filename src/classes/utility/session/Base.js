@@ -65,6 +65,18 @@ class Session {
   get page() {
     return this._page
   }
+
+  get started() {
+    return this._started
+  }
+
+  get browser() {
+    return this._browser
+  }
+
+  get rootURL() {
+    return this._rootURL
+  }
 }
 
 module.exports = Session

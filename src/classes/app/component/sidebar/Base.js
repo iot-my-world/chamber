@@ -1,4 +1,4 @@
-const ComponentBase = require('classes/app/component/Base')
+const ComponentBase = require('../Base')
 
 /**
  * base sidebar component class
@@ -6,9 +6,6 @@ const ComponentBase = require('classes/app/component/Base')
  * party specific sidebars
  */
 class Sidebar extends ComponentBase {
-  constructor(page) {
-    super(page)
-  }
 }
 
 Sidebar.rootID = '#sidebarRoot'
