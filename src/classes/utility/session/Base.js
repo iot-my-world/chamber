@@ -4,12 +4,12 @@ class Session {
   /**
    * construct new session object
    * @param {Browser} browser
-   * @param {string} iotMyWorldURL
+   * @param {string} rootURL
    */
-  constructor(browser, iotMyWorldURL) {
+  constructor(browser, rootURL) {
     /**
-     * started indicates that log in has completed
-     * and the sidebar and first active view are set up
+     * started indicates that the browser has
+     * opened and navigation to root URL is complete
      * @type {boolean}
      * @private
      */
@@ -27,7 +27,7 @@ class Session {
      * @type {string}
      * @private
      */
-    this._rootURL = iotMyWorldURL
+    this._rootURL = rootURL
     /**
      * instanceOf ViewBase === true
      * i.e. this is an instance of a class

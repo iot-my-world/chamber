@@ -7,12 +7,6 @@ const newCompanyConfigurationView = require(
   '../../../../view/configuration/company/Company')
 const newUserConfigurationView = require(
   '../../../../view/configuration/user/User')
-const newDeviceConfigurationView = require(
-  '../../../../view/configuration/device/Device')
-const newLiveTrackingDashboardView = require(
-  '../../../../view/dashboard/tracking/live/Live')
-const newHistoricalTrackingDashboardView = require(
-  '../../../../view/dashboard/tracking/historical/Historical')
 
 /**
  * system sidebar component class
@@ -23,7 +17,6 @@ class Sidebar extends SidebarBase {
   constructor(page) {
     super(page)
     this.configurationMenuOpen = false
-    this.dashboardMenuOpen = false
   }
 
   async openConfigurationMenu() {
@@ -35,16 +28,6 @@ class Sidebar extends SidebarBase {
     await this.waitForVisible(Sidebar.CompanyConfigurationLinkID)
     await this.waitForVisible(Sidebar.UserConfigurationLinkID)
     this.configurationMenuOpen = true
-  }
-
-  async openDashboardsMenu() {
-    if (this.dashboardMenuOpen) {
-      throw new Error('dashboards menu already open')
-    }
-    await this.click(Sidebar.DashboardsMenuOpen)
-    await this.waitForVisible(Sidebar.LiveTrackingDashboardLinkID)
-    await this.waitForVisible(Sidebar.HistoricalTrackingDashboardLinkID)
-    this.dashboardMenuOpen = true
   }
 
   async selectViewCompanyConfiguration() {
@@ -69,30 +52,6 @@ class Sidebar extends SidebarBase {
     }
     await this.click(Sidebar.UserConfigurationLinkID)
     return await newUserConfigurationView(this.page)
-  }
-
-  async selectViewDeviceConfiguration() {
-    if (!this.configurationMenuOpen) {
-      await this.openConfigurationMenu()
-    }
-    await this.click(Sidebar.DeviceConfigurationLinkID)
-    return await newDeviceConfigurationView(this.page)
-  }
-
-  async selectViewLiveTrackingDashboard() {
-    if (!this.dashboardMenuOpen) {
-      await this.openDashboardsMenu()
-    }
-    await this.click(Sidebar.LiveTrackingDashboardLinkID)
-    return await newLiveTrackingDashboardView(this.page)
-  }
-
-  async selectViewHistoricalTrackingDashboard() {
-    if (!this.dashboardMenuOpen) {
-      await this.openDashboardsMenu()
-    }
-    await this.click(Sidebar.HistoricalTrackingDashboardLinkID)
-    return await newHistoricalTrackingDashboardView(this.page)
   }
 
   async selectViewHome() {
@@ -123,11 +82,6 @@ Sidebar.CompanyConfigurationMenuOpen = '#sidebarConfigurationMenuOpen'
 Sidebar.CompanyConfigurationLinkID = '#sidebarCompanyConfigurationLink'
 Sidebar.ClientConfigurationLinkID = '#sidebarClientConfigurationLink'
 Sidebar.UserConfigurationLinkID = '#sidebarUserConfigurationLink'
-Sidebar.DeviceConfigurationLinkID = '#sidebarDeviceConfigurationLink'
-
-Sidebar.DashboardsMenuOpen = '#sidebarDashboardsMenuOpen'
-Sidebar.LiveTrackingDashboardLinkID = '#sidebarLiveTrackingDashboardLink'
-Sidebar.HistoricalTrackingDashboardLinkID = '#sidebarHistoricalTrackingDashboardLink'
 
 /**
  * a list of selectors (e.g. IDs, className etc) which need to be
@@ -138,7 +92,6 @@ Sidebar.initialSelectors = [
   ...SidebarBase.initialSelectors,
   Sidebar.homePageLinkID,
   Sidebar.CompanyConfigurationMenuOpen,
-  Sidebar.DashboardsMenuOpen,
 ]
 
 /**

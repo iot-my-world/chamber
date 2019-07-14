@@ -1,7 +1,7 @@
 const {TimeoutError} = require('puppeteer/Errors')
 const {
   isString, animationSleep,
-} = require('../../../utilities/utilities')
+} = require('../../utilities/utilities')
 
 class Base {
   constructor(page) {

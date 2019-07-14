@@ -1,4 +1,4 @@
-const ComponentBase = require('../../base/Base')
+const ComponentBase = require('../../Base')
 
 class FullPage extends ComponentBase {
   constructor(page) {
