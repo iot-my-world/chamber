@@ -20,5 +20,5 @@ async function newInfoView(page) {
   return newInfoView
 }
 
-module.exports = newInfoView()
+module.exports = newInfoView
 

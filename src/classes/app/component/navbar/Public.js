@@ -1,7 +1,17 @@
 const Base = require('./Base')
+const newInfoView = require('../../view/public/Info')
+const newContributorsView = require('../../view/public/Contributors')
 
 class PublicNavBar extends Base {
+  async selectViewInfo() {
+    await this.click(PublicNavBar.InfoTabID)
+    return await newInfoView(this.page)
+  }
 
+  async selectViewContributors() {
+    await this.click(PublicNavBar.ContributorsTabID)
+    return await newContributorsView(this.page)
+  }
 }
 
 PublicNavBar.InfoTabID = '#infoTab'

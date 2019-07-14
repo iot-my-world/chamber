@@ -7,15 +7,6 @@ async function navigateTest() {
   const publicSession = new PublicSession(browser, iotMyWorldURL)
 
   await publicSession.start()
-
-  // await publicSession.page.waitForSelector('#publicPageRoot')
-  // await publicSession.page.waitForSelector('#infoTab')
-  // await publicSession.page.waitForSelector('#contributorsTab')
-  // await publicSession.page.waitForSelector('#loginForgotPasswordTab')
-  //
-  // await publicSession.page.click('#infoTab')
-  // await publicSession.page.click('#contributorsTab')
-  // await publicSession.page.click('#loginForgotPasswordTab')
 }
 
 module.exports.navigateTest = navigateTest
