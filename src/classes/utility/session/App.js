@@ -6,6 +6,7 @@ const newLoginForgotPasswordView = require(
 const {SystemPartyType} = require('../../../brain/party/types')
 const newSystemSidebar = require('../../app/component/sidebar/System')
 const newSystemHomeView = require('../../app/view/app/home/System')
+const {newPublicSession} = require('./Public')
 
 class App extends Base {
   constructor(browser, rootURL) {
@@ -42,19 +43,15 @@ class App extends Base {
   }
 
   async startAndLogin(usernameOrEmailAddress, password, partyType) {
-    await super.start()
-    await this.login(usernameOrEmailAddress, password, partyType)
-  }
+    // start a public session and login
+    const publicSession = await newPublicSession(this.browser, this.rootURL)
+    await publicSession.navbar.selectViewLoginForgotPassword()
+    await publicSession.activeView.login(usernameOrEmailAddress, password)
 
-  async login(usernameOrEmailAddress, password, partyType) {
-    if (!this.started) {
-      await this.start()
-    }
-    await this.page.bringToFront()
+    // update this page from public session
+    this._page = publicSession.page
 
-    const loginView = await newLoginForgotPasswordView(this.page)
-    await loginView.login(usernameOrEmailAddress, password)
-
+    // set sidebar by party type
     switch (partyType) {
       case SystemPartyType:
         this._sidebar = new Proxy(
@@ -85,7 +82,9 @@ module.exports.newAppSession = async function(
   browser, rootURL,
   usernameOrEmailAddress, password, partyType,
 ) {
+
   const newAppSession = new App(browser, rootURL)
   await newAppSession.startAndLogin(usernameOrEmailAddress, password, partyType)
+
   return newAppSession
 }
