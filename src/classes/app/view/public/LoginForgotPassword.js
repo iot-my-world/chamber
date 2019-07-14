@@ -1,11 +1,24 @@
 const ViewBase = require('../Base')
 
 class LoginForgotPassword extends ViewBase {
+  async initialise(timeout = 4000) {
+    await super.initialise(timeout)
 
+  }
 }
+
+LoginForgotPassword.usernameOrEmailAddressInputID = '#usernameOrEmailAddress'
+LoginForgotPassword.passwordInputID = '#password'
+LoginForgotPassword.loginButtonID = '#loginButton'
+LoginForgotPassword.forgotPasswordLabelID = '#forgotPasswordLabel'
 
 LoginForgotPassword.initialSelectors = [
   '#loginForgotPasswordRoot',
+  '#loginCardRoot',
+  LoginForgotPassword.usernameOrEmailAddressInputID,
+  LoginForgotPassword.passwordInputID,
+  LoginForgotPassword.loginButtonID,
+  LoginForgotPassword.forgotPasswordLabelID,
 ]
 
 /**

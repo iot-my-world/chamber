@@ -5,7 +5,8 @@
     "puppeteer": "^1.13.0"
   },
   "scripts": {
-    "test": "env ENVIRONMENT=local SLEEP_FACTOR=1 mocha src/start.js --recursive src/test",
+    "testLocal": "env ENVIRONMENT=local SLEEP_FACTOR=1 mocha src/start.js --recursive src/test",
+    "testLocalHeadless": "env ENVIRONMENT=localHeadless SLEEP_FACTOR=1 mocha src/start.js --recursive src/test",
     "testBuild": "env ENVIRONMENT=build SLEEP_FACTOR=1 mocha src/start.js --recursive src/test"
   }
 }

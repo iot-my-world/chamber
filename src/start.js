@@ -59,9 +59,17 @@ function parseCommandLineArgs() {
             break
 
           case 'local':
-          default:
             args.environment = 'local'
             args.iotMyWorldURL = 'http://localhost:3000'
+            break
+
+          case 'localHeadless':
+            args.environment = 'localHeadless'
+            args.iotMyWorldURL = 'http://localhost:3000'
+            break
+
+          default:
+            throw new Error('invalid environment command line arg')
         }
         break
 
@@ -91,7 +99,10 @@ before(async function() {
   global.iotMyWorldURL = cmdLineArgs.iotMyWorldURL
   global.sleepFactor = cmdLineArgs.sleepFactor
 
-  if (cmdLineArgs.environment === 'build') {
+  if (
+    (cmdLineArgs.environment === 'build') ||
+    (cmdLineArgs.environment === 'localHeadless')
+  ) {
     opts.headless = true
   }
 
